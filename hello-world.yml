@@ -1,7 +1,19 @@
 version: 2.1
+
+executors:
+  my-executor:
+    docker:
+      - image: circleci/ruby:2.5.1-node-browsers
+
 commands:
   hello-world:
     steps:
       - run:
           command: |
             echo "hello world"
+
+jobs:
+  my-job:
+    executor: my-executor
+    steps:
+      - hello-world
